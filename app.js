@@ -21,6 +21,16 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(function(req, res, next) {
+
+	res.setHeader('Access-Control-Allow-Origin', '*');
+	res.setHeader('Access-Control-Allow-Credentials', 'true');
+	res.setHeader('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT,DELETE');
+	res.setHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, Authorization');
+	res.setHeader('Access-Control-Expose-Headers', 'X-Total-Count');
+	if(req.method === 'OPTIONS') return res.status(204).send('APPROVE');
+	next();
+});
 app.use(function (req, res, next) {
   console.log('>>>>>>>>>>>>>>>>', req.path);
   next();
