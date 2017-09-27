@@ -35,6 +35,9 @@ app.use(function (req, res, next) {
   console.log('>>>>>>>>>>>>>>>>', req.path);
   next();
 });
+app.use('/csrf', function (req, res) {
+	res.render('csrf-chllg');
+})
 app.use('/', index);
 
 // catch 404 and forward to error handler
